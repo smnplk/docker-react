@@ -1,5 +1,8 @@
 FROM node:alpine
 
+# we need to set a CI env variable so tests ran with --coverage will exit 
+ENV CI=ci
+
 WORKDIR '/app'
 
 COPY package.json .
