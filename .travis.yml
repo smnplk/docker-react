@@ -1,24 +1,20 @@
 sudo: required
 services:
-  - docker
-
+- docker
 before_install:
-  - docker build -t dev-image -f Dockerfile.dev .
-
+- docker build -t dev-image -f Dockerfile.dev .
 script:
-  - docker run dev-image npm run test -- --coverage
-
-
+- docker run dev-image npm run test -- --coverage
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
   app: docker-react
   env: DockerReact-env
   bucket_name: elasticbeanstalk-us-east-2-781604348022
-  bucket_path: docker-react 
+  bucket_path: docker-react
   on:
     branch: master
     access_key_id:
-      secure: $AWS_ACCESS_KEY
+      secure: jzMU99U5i/2NkYBUYD95CY6QfB/hiiANureKTlH3mpYDbFZNCqAlitOXitcorRGIubcTSwWyW8UDf6h74lyjeKZ8/u0hthgsvjnPxgTs/UjXGh0t15pFXPI2aLrF81fARZEJLoWSDwbMsYFch6P0nyAspaVNuuQMW56AhQ2ove2l/w1FQA7F7bPbke4SR1ukTLM2NIozQIcVJQVGQL+bEn8u4gCcRLq2J0kPqJuGvrJeijlRrjeyCR2vrRxkIwNarCly2Zi6eEKUJGo5Z63Np89Qfw2UwS5Eu68GtRwmxXZnytY7/suoB/d7miDLP/qzn3T9+LvEW3LBw86nVENooFtb8W3/cqnC65UVGiaBJ2C1/GB+AAuFHV68daoDWcFYHjX7OBmR6WSc4nFlls+TpCkJbeO+adUDhew8jsfaSIkaIFreINChdFWfCxWIsQAoezMQqpOKFLj+yj+LMw+W655pFHPMnkWvGtjS9j5vFd4yohdUerjyFd6y+Qo65LmQdHhBruZt70mloCwHrjvrXCIjP7Vcyc/pniAerhTA0xIpX3bBIXMIbdqj0nRmhXj1H21960w3AStZKrG8v74DUyxB940F+L4Cth/3amELAGGplF9zMcxVc9Zmg2mhdDX4r20+AJvVvd8W0DobIT0j+uKmrBVWf8t6NeLWxVsRCpU=
     secret_access_key:
-      secure: $AWS_SECRET_KEY
+      secure: i4K8CUfp6nxkhWnPYwa9M1Vbaj29ybq8/mnbDdXkbtVdwdT3nLIliELDg95PkRiKi7LtGkh11RBSZ9K7XJ8j8IhN59/L9/enHXrhFKvkcJsaN6gAr69ronUTkFs7E4EJGi8hpUv4gzyfWzfsTfadBKMOrlef0h2yElXlELWDCxWnm980P2mmAi733zBp9XafC/SnSICqXlov32suZ2l/dIBiZGYbp62hAxlm4U1NoExcnAIkcl5f0C7zWlr62dBhPRn8CIwHDP0n2DJ7rrD9AOjsOiNtC0HTJz6+7NT+6XtTSA7ieqTpYRfwtNyBaOZU3yVx3onTluHbCcKFKmeKxp5bJ0TmBOMXp/rNF+6QHcRZLmiwF/fyEHa3wMpXzeFWtJA4WtkyBP39OApL1mbToGVKCzQ8eXkkkZa3+2Zom+5hq8T+O23xC1Oe0CoWyJBd0GwZVvwt4c76NtaNf5cQoiRUVNDaxms/zHG0rmaX5IGZ6ZjqYMNtPP8a9zmvWgXtqnrcHcuEOe0HFB5nnPSdDgQo5LW4h+/NvWR0eSlPLQNA9Osvgn6YAtPnbf4KIK0idk4Ox1vHanaDwCiUHgWGFytdflx1u3IxahUvWOR7CszyAV/jt4nCBY1rQMSpYQlYZUYOh+kVUpEFn+6WPT4cDH0pYkBzXJGHQzD3Gc2E1xc=
